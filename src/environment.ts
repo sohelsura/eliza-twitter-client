@@ -70,6 +70,10 @@ export const twitterEnvSchema = z.object({
     POST_INTERVAL_MAX: z.number().int(),
     ENABLE_ACTION_PROCESSING: z.boolean(),
     ACTION_INTERVAL: z.number().int(),
+    LIKE_ACTION_INTERVAL: z.number().int().default(5),
+    RETWEET_ACTION_INTERVAL: z.number().int().default(15),
+    QUOTE_ACTION_INTERVAL: z.number().int().default(30),
+    REPLY_ACTION_INTERVAL: z.number().int().default(20),
     POST_IMMEDIATELY: z.boolean(),
     TWITTER_SPACES_ENABLE: z.boolean().default(false),
     MAX_ACTIONS_PROCESSING: z.number().int(),
@@ -208,6 +212,31 @@ export async function validateTwitterConfig(
                 runtime.getSetting("ACTION_INTERVAL") ||
                     process.env.ACTION_INTERVAL,
                 5 // 5 minutes
+            ),
+
+            // Separate action intervals for different action types
+            LIKE_ACTION_INTERVAL: safeParseInt(
+                runtime.getSetting("LIKE_ACTION_INTERVAL") ||
+                    process.env.LIKE_ACTION_INTERVAL,
+                5 // 5 minutes
+            ),
+
+            RETWEET_ACTION_INTERVAL: safeParseInt(
+                runtime.getSetting("RETWEET_ACTION_INTERVAL") ||
+                    process.env.RETWEET_ACTION_INTERVAL,
+                15 // 15 minutes
+            ),
+
+            QUOTE_ACTION_INTERVAL: safeParseInt(
+                runtime.getSetting("QUOTE_ACTION_INTERVAL") ||
+                    process.env.QUOTE_ACTION_INTERVAL,
+                30 // 30 minutes
+            ),
+
+            REPLY_ACTION_INTERVAL: safeParseInt(
+                runtime.getSetting("REPLY_ACTION_INTERVAL") ||
+                    process.env.REPLY_ACTION_INTERVAL,
+                20 // 20 minutes
             ),
 
             // bool

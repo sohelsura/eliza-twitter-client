@@ -127,6 +127,26 @@
         "default": 5,
         "description": "Interval for processing actions (in minutes)"
       },
+      "LIKE_ACTION_INTERVAL": {
+        "type": "integer",
+        "default": 5,
+        "description": "Interval for processing like actions (in minutes)"
+      },
+      "RETWEET_ACTION_INTERVAL": {
+        "type": "integer",
+        "default": 15,
+        "description": "Interval for processing retweet actions (in minutes)"
+      },
+      "QUOTE_ACTION_INTERVAL": {
+        "type": "integer",
+        "default": 30,
+        "description": "Interval for processing quote actions (in minutes)"
+      },
+      "REPLY_ACTION_INTERVAL": {
+        "type": "integer",
+        "default": 20,
+        "description": "Interval for processing reply actions (in minutes)"
+      },
       "POST_IMMEDIATELY": {
         "type": "boolean",
         "default": false,
